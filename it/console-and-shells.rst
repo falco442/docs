@@ -90,45 +90,47 @@ assuento che tu abbia già aggiunto la cartella Console al tuo ``PATH``::
 
     $ cake -app /path/to/cakephp/app
 
-The path supplied can be relative to the current working directory
-or supplied as an absolute path.
+Il percorso fornito può essere relativo rispetto alla directory corrente
+o fornito come percorso assoluto.
 
 .. _adding-cake-to-your-path:
 
-Adding cake to your system path
+Aggiungere cake al tuo percorso di sistema
 -------------------------------
 
-If you are on a \*nix system (linux, MacOSX) the following steps will let you add the
-cake executable to your system path.
+Se sei in un sistema \*nix (linux, MacOSX) i passi seguenti ti permetteranno di aggiungere
+l'eseguibile cake al tuo percorso di sistema.
 
-#. Locate where your CakePHP install, and cake executable are. For example
+
+#. Posizionati nella directory di installazione di CakePHP, e dove sono gli eseguibili. Per esempio
    ``/Users/mark/cakephp/lib/Cake/Console/cake``
-#. Edit your ``.bashrc`` or ``.bash_profile`` file in your home directory, and add the following::
+#. Modifica il file ``.bashrc`` o ``.bash_profile`` nella tua directory home, e aggiungi le righe seguenti::
 
     export PATH="$PATH:/Users/mark/cakephp/lib/Cake/Console"
 
-#. Reload the bash configuration or open a new terminal, and ``cake`` should work anywhere.
+#. Ricarica la configurazione della bash o apri un nuovo terminale, ed il comando ``cake`` dovrebbe ora funzionare da un qualsiasi percorso.
 
-If you are on Windows Vista or 7, you should follow the steps below.
+Se sei sotto sistema operativo Windows Vista o 7, dovresti seguire i seguenti passi.
 
-#. Locate where your CakePHP install and cake executable are. For example
-   ``C:\xampp\htdocs\cakephp\lib\Cake\Console``
-#. Open System Properties window from My Computer. You want to try the shortcut Windows Key + Pause or Windows Key + Break. Or, from the Desktop, right-click My Computer, click Properties then click Advanced System Settings link in the left column
-#. Go under Advanced tab and click on Environment Variables button
-#. In the System Variables portion, reach Path variable and double-click on it to Edit
-#. Add the ``cake`` install path string followed by a semi colon. Result example::
+
+#. Posizionati dove si trova la directory di installazione di CakePHP, e dove sono gli eseguibili. Per esempio
+   ``C:\xampp\htdocs\cakephp\lib\Cake\Console``   
+
+#. Apri le Proprietà di Sistema da My Computer. Mediante la shortcut Tasto Windows + Pause o Tasto Windows + Break. o, dal Desktop, fai click col destro su My Computer, clicca Proprietà e poi clicca il link Impostazioni di Sistema Avanzate dalla colonna di sinistra
+#. Passa al tab Avanzate e clicca sul pulsante Variabili di Ambiente
+#. Nella porzione Variabili di Sistema, raggiungi la variabile Percorso e facci doppio click per modificarla
+#. Aggiungi il percorso di installazione ``cake`` seguito da due punti. Un risultato di esempio::
 
     %SystemRoot%\system32;%SystemRoot%;C:\xampp\htdocs\cakephp\lib\Cake\Console;
 
-#. Click Ok and ``cake`` should work anywhere.
+#. Clicca OK e il comando ``cake`` dovrebbe essere disponibile da qualsiasi percorso.
 
-Creating a shell
+Creare una shell
 ================
 
-Let's create a shell for use in the Console. For this example,
-we'll create a simple Hello world shell. In your applications
-``Console/Command`` directory create ``HelloShell.php``. Put the following
-code inside it::
+Creiamo ora una shell da usare nella Console. Per questo esempio,
+creeremo una semplice shell Helllo World. Nella tua app directory ``Console/Command`` crea un file ``HelloShell.php``. Inserisci il seguente codice in esso::
+
 
     class HelloShell extends AppShell {
         public function main() {
@@ -136,15 +138,15 @@ code inside it::
         }
     }
 
-The conventions for shell classes are that the class name should match
-the file name, with the suffix of Shell. In our shell we created a ``main()`` method.
-This method is called when a shell is called with no additional commands. We'll add
-some more commands in a bit, but for now let's just run our shell. From your application
-directory, run::
+Le convenzioni per le classi di shell sono che il nome della classe dovrebbe corrispondere al nome del file, con il suffisso Shell.
+Nella nostra scell abbiamo creato un metodo ``main()``.
+Questo metodo è chiamato quando una shell è chiamata senza parametri addizionali.
+Aggiungeremo alcuni comandi a breve, ma per ora semplicemente limitiamoci ad eseguire la shell.
+Dalla directory della tua applicazione, esegui::
 
     Console/cake hello
 
-You should see the following output::
+Vedrai il seguente output::
 
     Welcome to CakePHP v2.0.0 Console
     ---------------------------------------------------------------
@@ -153,13 +155,15 @@ You should see the following output::
     ---------------------------------------------------------------
     Hello world.
 
-As mentioned before, the ``main()`` method in shells is a special method called
-whenever there are no other commands or arguments given to a shell. You may have also
-noticed that HelloShell is extending ``AppShell``. Much like :ref:`app-controller`, AppShell
-gives you a base class to contain all your common functions or logic. You can define an AppShell,
-by creating ``app/Console/Command/AppShell.php``. If you don't have one, CakePHP will use the
-built-in one. Since our main method wasn't very interesting let's add another command
-that does something::
+Come prima menzionato, il metodo ``main()`` nella shell è un metodo speciale chiamato
+ogniqualvolta non ci sono altri comandi o argomenti dati ad una shell.
+Avrai anche notato che HelloShell sta estendendo la classe ``AppShell``.
+Esattamente come per :ref:`app-controller`, AppShell ti fornisce già una classe base
+per contenere tutte le funzionalità o le logiche comuni. Puoi definire una AppShell, creando
+``app/Console/Command/AppShell.php``. Se non ne hai una, CakePHP utilizzerà quella di sistema.
+Dal momento che il nostro metodo main non era molto interessante, aggiungiamo un altro comando
+che faccia qualcosa::
+
 
     class HelloShell extends AppShell {
         public function main() {
@@ -171,26 +175,26 @@ that does something::
         }
     }
 
-After saving this file you should be able to run ``Console/cake hello hey_there your-name``
-and see your name printed out. Any public method not prefixed by an ``_`` is allowed to be
-called from the command line. In our ``hey_there`` method we also used ``$this->args``, this
-property contains an array of all the positional arguments provided to a command. You can
-also use switches or options on shell applications, these are available at ``$this->params``,
-and through the ``param()`` method, but we'll cover that in a bit.
+Dopo aver salvato questo file dovresti poter eseguire ``Console/cake hello hey_there your-name``
+e vedere il tuo nome stampato a schermo. Nel nostro metodo ``hey_there`` abbiamo anche usato ``$this->args``;
+queesta proprietà contiene un array di tutti gli argomenti posizionali forniti al comando.
+Puoi anche usare switch o opzioni nelle tue applicazioni shell, queste sono disponibili nella proprietà
+``$this->params``, e attraverso il metodo ``param()``, ma ci arriveremo a breve.
 
-When using a ``main()`` method you won't be able to use the positional arguments
-or parameters. This is because the first positional argument or option is
-interpreted as the command name. If you want to use arguments and options, you
-should use method names other than ``main``.
+Quando utilizzi il metodo ``main()`` non puoi usare gli argomenti posizionali, o i parametri.
+Questo perché il primo argomento posizionale, o la prima opzione, è interpretata come il nome di un comando.
+Se vuoi utilizzare questi argomenti ed opzioni, dovresti usare altri nomi per i metodi, diversi da ``main``.
 
-Using Models in your shells
+
+Usare i Modelli nelle tue shell
 ---------------------------
 
-You'll often need access to your application's business logic in shell utilities;
-CakePHP makes that super easy. By setting a ``$uses`` property, you can define an
-array of models you want to have access to in your shell. The defined models
-are loaded in as properties attached to your shell, just like a controller gets
-models attached to it::
+Ti capiterà spesso di aver bisogno di accedere alle logiche della tua applicazione nelle
+utilità di shell; CakePHP rende questo super semplice. Impostando la proprietà
+``$uses``, puoi definire un array di modelli ai quali vuoi avere accesso nella tua shell.
+I modelli definiti sono caricati come proprietà allegate alla tua shell, proprio come
+i Controllers prendono il modello ad essi associato::
+
 
     class UserShell extends AppShell {
         public $uses = array('User');
@@ -201,28 +205,32 @@ models attached to it::
         }
     }
 
-The above shell, will fetch a user by username and display the information
-stored in the database.
+La shell di sopra, prenderà un utente a partire dal suo nome utente, e stamperà le informazioni
+immagazzinate nel database.
+
 
 Shell tasks
 ===========
 
-There will be times when building more advanced console applications, you'll want
-to compose functionality into re-usable classes that can be shared across many shells.
-Tasks allow you to extract commands into classes. For example the ``bake`` is made
-almost entirely of tasks. You define a shell's tasks by using the ``$tasks`` property::
+Verranno i tempi in cui, costruendo applicazioni per riga di comando più avanzate, vorrai
+comporre le funzionalità in classi riutilizzabili che possano essere condivise da più shells.
+I Task ti permettono di estrarre questi comandi in classi. Per esempio, il comando ``bake``
+è chiamato in quasi tutti i task.
+Puoi definire i task chiamati da una shell usando la proprietà ``$tasks``::
+
 
     class UserShell extends AppShell {
         public $tasks = array('Template');
     }
 
-You can use tasks from plugins using the standard :term:`plugin syntax`.
-Tasks are stored in ``Console/Command/Task/`` in files named after
-their classes. So if we were to create a new 'FileGenerator' task, you would create
+Poi usare i task dai plugin utilizzando la notazione standard :term:`plugin syntax`.
+I Task sono depositati nella directory ``Console/Command/Task/`` chiamati come le loro classi.
+Così, se stiamo per creare un Task di nome 'FileGenerator', creeremo il file
 ``Console/Command/Task/FileGeneratorTask.php``.
 
-Each task must at least implement an ``execute()`` method. The ShellDispatcher,
-will call this method when the task is invoked. A task class looks like::
+Ogni task deve implementare almeno un metodo ``execute()``. La ShellDispatcher,
+chiamerà questo metodo quando il task è invocato. Un task di una shell appare come::
+
 
     class FileGeneratorTask extends Shell {
         public $uses = array('User');
@@ -231,10 +239,10 @@ will call this method when the task is invoked. A task class looks like::
         }
     }
 
-A shell can also access its tasks as properties, which makes tasks great for
-making re-usable chunks of functionality similar to :doc:`/controllers/components`::
+Una shell può anche accedere alle proprietà del suo task, che rende i task ottimi per
+costruire pezzi di codice riutilizzabili simili a to :doc:`/controllers/components`::
 
-    // found in Console/Command/SeaShell.php
+    // si troverà in Console/Command/SeaShell.php
     class SeaShell extends AppShell {
         public $tasks = array('Sound'); // found in Console/Command/Task/SoundTask.php
         public function main() {
@@ -242,53 +250,57 @@ making re-usable chunks of functionality similar to :doc:`/controllers/component
         }
     }
 
-You can also access tasks directly from the command line::
+Puoi accedere ai task anche direttamente dalla riga di comando::
 
     $ cake sea sound
 
 .. note::
 
-    In order to access tasks directly from the command line, the task
-    **must** be included in the shell class' $tasks property.
-    Therefore, be warned that a method called "sound" in the SeaShell
-    class would override the ability to access the functionality in the
-    Sound task specified in the $tasks array.
+    Per accedere ai task direttamente dalla riga di comando,
+    il task **deve** essere incluso nella proprietà ``$tasks`` della shell.
+    Quindi, sappi che un metodo chiamato "sound" nella classe SeaShell
+    sovrascrivverebbe l'abilità di accedere alla funzionalità Sound del task specificato
+    nell'array $tasks.
+    
 
-Loading tasks on the fly with TaskCollection
+Caricare i task al volo con TaskCollection
 --------------------------------------------
 
-You can load tasks on the fly using the Task collection object. You can load tasks that
-were not declared in $tasks this way::
+Puoi caricare i task al volo utilizzando l'oggetto Task Collection, Puoi caricare i task
+che non erano dichiarati in $tasks in questo modo::
+
 
     $Project = $this->Tasks->load('Project');
 
-Would load and return a ProjectTask instance. You can load tasks from plugins using::
+Caricherà e ritornerà un'istanza di ProjectTast. Puoi caricare i task dai plugin usando::
+
 
     $ProgressBar = $this->Tasks->load('ProgressBar.ProgressBar');
 
 .. _invoking-other-shells-from-your-shell:
 
-Invoking other shells from your shell
+Invocare altre shell dalla tua shell
 =====================================
 
-Shells no longer have direct access to the ShellDispatcher any more through `$this->Dispatch`.
-There are still many cases where you will want to invoke one shell from another though.
-`Shell::dispatchShell()` gives you the ability to call other shells by providing the
-`argv` for the sub shell. You can provide arguments and options either
-as var args or as a string::
+Le shell non hanno più accesso diretto alla ShellDispatcher attraverso `$this->Dispatch`.
+Ci sono molti casi dove vorrai invocare una shell da un'altra, però.
+`Shell::dispatchShell()` di dà la possibilità di chiamare altre shell fornendo il `argv` perr la sottoshell.
+Puoi fornire argomenti ed opzioni o come var args o come stringhe::
 
-    // As a string
+
+    // Come stringa
     $this->dispatchShell('schema create Blog --plugin Blog');
 
-    // As an array
+    // Come array
     $this->dispatchShell('schema', 'create', 'Blog', '--plugin', 'Blog');
 
-The above shows how you can call the schema shell to create the schema for a plugin
-from inside your plugin's shell.
+L'esempio di sopra mostra come puoi chiamare la shell schema per creare lo schema per un plugin
+all'interno di una shell di un tuo plugin.
+
 
 .. _shell-output-level:
 
-Console output levels
+Livelli di output della Console
 =====================
 
 Shells often need different levels of verbosity. When running as cron jobs,
