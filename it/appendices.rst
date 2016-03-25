@@ -99,5 +99,5 @@ Informazioni generali
 
 
 .. meta::
-    :title lang=en: Appendices
-    :keywords lang=en: migration guide,migration path,new features,glossary
+    :title lang=it: Appendice
+    :keywords lang=it: guida alla migrazione,percorso di migrazione,nuove caratteristiche,sommario
