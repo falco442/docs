@@ -1,15 +1,13 @@
 CakePHP Overview
 ################
 
-Welcome to the Cookbook, the manual for the CakePHP web application
-framework that makes developing a piece of cake!
 
-This manual assumes that you have a general understanding of PHP
-and a basic understanding of object-oriented programming (OOP).
-Different functionality within the framework makes use of different
-technologies – such as SQL, JavaScript, and XML – and this manual
-does not attempt to explain those technologies, only how they are
-used in context.
+Benvenuto nel Cookbook, il manuale per il framework CakePHP che rende lo sviluppo dolce come una torta!
+
+Questo manuale presuppone che tu abbia una conoscenza generale di PHP e i rudimenti base della programmazione ad oggetti (OOP).
+Diverse funzionalità all'interno del framework fanno uso di differenti tecnologie - come SQL, JavaScript, e XML  - e questo manuale non
+si propone di spiegare quest tecnologie, solo come utilizzarle in questo contesto.
+
 
 .. toctree::
     :maxdepth: 1
@@ -20,5 +18,5 @@ used in context.
 
 
 .. meta::
-    :title lang=en: CakePHP Overview
-    :keywords lang=en: web application framework,model view controller,object oriented programming,piece of cake,cookbook,functionality,xml,cakephp
+    :title lang=it: Panoramica CakePHP
+    :keywords lang=it: web application framework,modello vista controllore,programmazione orientata ad oggetti,fetta di torta,libro di ricette,funzionalità,xml,cakephp
