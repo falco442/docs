@@ -1,59 +1,53 @@
 Shells, Tasks & Console Tools
 #############################
 
-CakePHP features not only a web framework but also a console framework
-for creating console applications. Console applications are ideal for handling
-a variety of background tasks such as maintenance, and completing work outside
-of the request-response cycle. CakePHP console applications allow you
-to reuse your application classes from the command line.
+CakePHP non si propone solo come framework web, ma anche come framework per creare applicazioni per riga di comando.
+Le applicazioni da riga di comando sono ideali per gestire una varietà di compiti in background come la manutenzione, 
+e completare il lavoro al di fuori del ciclo request-response.
+Le applicazioni da riga di comando di CakePHP ti permettono di riutilizzare le classi della tua applicazione dalla riga di comando.
 
-CakePHP comes with a number of console applications out of the box.
-Some of these applications are used in concert with other CakePHP
-features (like ACL or i18n), and others are for general use in
-getting you working faster.
+CakePHP viene con un numero di applicazioni da riga di comando già definite.
+Alcune di queste sono utilizzate in concertazione con le altre caratteristiche di CakePHP (come ACL o i18n),
+ed altre sono per un utilizzo generale in modo da rendere più veloce il tuo lavoro.
+
 
 .. _the-cakephp-console:
 
-The CakePHP console
+La console di CakePHP
 ===================
 
-This section provides an introduction into CakePHP at the
-command-line. If you've ever needed access to your CakePHP MVC
-classes in a cron job or other command-line script, this section is
-for you.
+Questa sezione fornisce un'introduzione per la riga di comando di CakePHP.
+Se hai mai avuto bisogno delle tue classi MVC di CakePHP in un cronjob o un altro script da riga di comando,
+questa sezione è per te.
 
-PHP provides a CLI client that makes interfacing with your
-file system and applications much smoother. The CakePHP console
-provides a framework for creating shell scripts. The Console uses a
-dispatcher-type setup to load a shell or task, and provide its
-parameters.
+PHP fornisce un client CLI (Command Line Interface) che rende più fluido
+l'interfacciarsi con il file system e le applicazioni.
+La console CakePHP fornisce un framework per creare scripts da riga di comando.
+La Console utilizza un'impostazione di tipo dispatcher per caricare una shell o un task, e fornisce i suoi parametri.
+
 
 .. note::
 
-    A command-line (CLI) build of PHP must be available on the system
-    if you plan to use the Console.
+    Una command-line (CLI) costruita da PHP è disponibile nel sistema se pensi di utilizzare la Console.
 
-Before we get into specifics, let's make sure we can run the
-CakePHP console. First, you'll need to bring up a system shell. The
-examples shown in this section will be in bash, but the CakePHP
-Console is Windows-compatible as well. Let's execute the Console
-program from bash. This example assumes that the user is currently
-logged into a bash prompt and is currently at the root of a CakePHP
-application.
+Prima di entrare nello spefico, assicuriamoci che possiamo eseguire la console di CakePHP.
+Prima di tutto, devi chiamare una shell di sistema. Gli esempi mostrati in questa sezione saranno in bash,
+ma la console di CakePHP è ugualmente compatibile con Windows.
+Eseguiamo un programma di Console dalla bash.
+Questo esempio assume che l'utente sia loggato nel prompt della bash e sia posizionato alla radice dell'applicazione CakePHP.
 
-CakePHP applications contain a ``Console`` directory that contains
-all the shells and tasks for an application. It also comes with an
-executable::
+Le applicazioni CakePHP contengono una directory ``Console`` che contiene tutte le shell e i task per un'applicazione.
+Viene insieme ad un eseguibile::
 
-    $ cd /path/to/cakephp/app
+
+    $ cd /percorso/in/cakephp/app
     $ Console/cake
 
-It's often wise to add the core cake executable to your system path
-so you can use the cake command anywhere. This comes in handy when you are
-creating new projects. See :ref:`adding-cake-to-your-path` for how to make ``cake``
-available systemwide.
+Spesso è saggio aggiungere l'eseguibile del core di cake al tuo percorso di sistema,
+così che tu possa usare il comando cake dovunque. Questo torna utile il momento che stai creando nuovi progetti.
+Guarda :ref:`adding-cake-to-your-path` per sapere come rendere ``cake`` disponibile come comando di sistema.
 
-Running the Console with no arguments produces this help message::
+Eseguendo la Console senza argomenti produce il seguente messaggio di help::
 
     Welcome to CakePHP v2.0.0 Console
     ---------------------------------------------------------------
@@ -84,17 +78,15 @@ Running the Console with no arguments produces this help message::
     To run a command, type 'cake shell_name [args]'
     To get help on a specific command, type 'cake shell_name help'
 
-The first information printed relates to paths. This is especially
-helpful if you're running the console from different parts of the
-filesystem.
+La prima informazione stampata si riferisce ai percorsi.
+Questo è particolarmente utile se stai eseguendo laa console da punti differenti del filesystem.
 
-Since many users add the CakePHP console to their system's path so it can
-be accessed easily. Printing out the working, root, app, and core
-paths allows you to see where the console will be making changes.
-To change the app folder you wish to work with, you can supply its
-path as the first argument to the cake command. This next example
-shows how to specify an app folder, assuming you've already added
-the console folder to your ``PATH``::
+Molti utenti aggiungono la console di CakePHP al loro percorso di sistema in modo che possa essere acceduta facilmente.
+Stampare le informazioni di root, app, core e percorsi ti permette di vedere dove la console sta lavorando per applicare cambiamenti.
+Per cambiare la directory app con la quale vuoi lavorare, puoi fornire il suo percorso come primo argomento al comando cake.
+Questo prossimo esempio mostra come specificare una cartella app al comando cake,
+assuento che tu abbia già aggiunto la cartella Console al tuo ``PATH``::
+
 
     $ cake -app /path/to/cakephp/app
 
